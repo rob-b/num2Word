@@ -1,11 +1,10 @@
 {-# LANGUAGE TemplateHaskell #-}
 
-import           Data.Either    (isLeft, rights)
-import           Debug.Trace
+import           Data.Either    (isLeft)
 import           Hedgehog
 import qualified Hedgehog.Gen   as Gen
 import qualified Hedgehog.Range as Range
-import           Lib            (convert, mkTarget)
+import           Lib            (mkTarget)
 
 main :: IO ()
 main = tests >>= print
