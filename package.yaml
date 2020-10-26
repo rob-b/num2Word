@@ -37,7 +37,7 @@ library:
     - -Wredundant-constraints
 
 executables:
-  num2Word-exe:
+  num2word:
     main:                Main.hs
     source-dirs:         app
     ghc-options:

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 1018ea34f694e0c5c9617df4b7d8c012028090ff148845c68c7261f080cf12ca
+-- hash: c0ed8fc8c3d70212c2e9f644043b8185e9cf334e0c91274dc356d9ff1f0cf11f
 
 name:           num2Word
 version:        0.1.0.0
@@ -40,7 +40,7 @@ library
     , text
   default-language: Haskell2010
 
-executable num2Word-exe
+executable num2word
   main-is: Main.hs
   other-modules:
       Paths_num2Word
