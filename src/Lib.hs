@@ -26,12 +26,6 @@ data InvalidNumber
   | NoWordDefined Text
   deriving (Show)
 
-data NumberRepr = NumberRepr
-  { numThousands :: Int
-  , numHundreds  :: Int
-  , numTens      :: Int
-  } deriving (Show)
-
 numberMap :: IntMap String
 numberMap =
   IntMap.fromList
@@ -66,11 +60,8 @@ numberMap =
 
 convert :: Target -> IO ()
 convert target = do
-  let numRepr = mkNumberRepr target
-  let thous = thousandsToString $ numThousands numRepr
-  let hunds = hundredsToString $ numHundreds numRepr
-  let tens = tensToString $ numTens numRepr
-  putStrLn . renderFinal $ rights [thous, hunds, tens]
+  let (thous, hunds, tens) = mkNumberRepr target
+  putStrLn . renderFinal $ rights [thousandsToString thous, hundredsToString hunds, tensToString tens]
 
 renderFinal :: [String] -> String
 renderFinal [] = "hmmm....."
@@ -81,11 +72,11 @@ renderFinal xs = renderFinal' $ reverse xs
       let pre = intercalate ", " (reverse xs')
       in pre ++ " and " ++ x'
 
-mkNumberRepr :: Target -> NumberRepr
+mkNumberRepr :: Target -> (Int, Int, Int)
 mkNumberRepr i =
   let (numThousands, rem') = divMod (unTarget i) 1000
       (numHundreds, numTens) = divMod rem' 100
-  in NumberRepr {..}
+  in (numThousands, numHundreds, numTens)
 
 renderMillion :: Int -> Either InvalidNumber [Char]
 renderMillion i = do
