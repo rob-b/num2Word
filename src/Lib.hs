@@ -11,7 +11,9 @@ import           Data.Maybe         (catMaybes)
 import           Data.Text          (Text)
 import qualified Data.Text          as T
 
-data Target = Target { unTarget :: Int }
+newtype Target = Target
+  { unTarget :: Int
+  } deriving (Show)
 
 mkTarget :: Int -> Either Text Target
 mkTarget n

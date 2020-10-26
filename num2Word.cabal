@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 75734f3676f7f5be596ed9eda46fb559dbc3ecbd17f7d7f310139c3c17461c57
+-- hash: 1018ea34f694e0c5c9617df4b7d8c012028090ff148845c68c7261f080cf12ca
 
 name:           num2Word
 version:        0.1.0.0
@@ -62,7 +62,7 @@ test-suite num2Word-test
       Paths_num2Word
   hs-source-dirs:
       test
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -Wall
   build-depends:
       base >=4.7 && <5
     , containers
