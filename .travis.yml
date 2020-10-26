@@ -143,12 +143,17 @@ after_success:
   then
     export STACK_YAML=release.stack.yaml
     stack install github-release
+    stack exec -- github-release release \
+      --token "$GITHUB_TOKEN" \
+      --owner rob-b \
+      --repo num2Word \
+      --tag "$TRAVIS_TAG" \
+      --title "num2word-$TRAVIS_TAG-$TRAVIS_OS_NAME"
     stack exec -- github-release upload \
       --token "$GITHUB_TOKEN" \
       --owner rob-b \
       --repo num2Word \
       --tag "$TRAVIS_TAG" \
-      --title "$TRAVIS_TAG" \
       --file "$(stack path --local-install-root)/bin/num2word" \
       --name "num2word-$TRAVIS_TAG-$TRAVIS_OS_NAME"
     unset STACK_YAML
